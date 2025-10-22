@@ -14,7 +14,7 @@
     {
       "matches": ["https://www.perplexity.ai/*"],
       "js": ["content.js"],
-      "run_at": "document_start"
+      "run_at": "document_idle"
     }
   ],
   "action": {
@@ -29,7 +29,8 @@
   "permissions": [
     "sidePanel",
     "activeTab",
-    "declarativeNetRequest"
+    "declarativeNetRequest",
+    "scripting"
   ],
   "host_permissions": [
     "https://www.perplexity.ai/*",

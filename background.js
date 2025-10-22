@@ -2,6 +2,23 @@
 chrome.action.onClicked.addListener(async (tab) => {
   try {
     await chrome.sidePanel.open({ tabId: tab.id });
+
+    // Inject content script when side panel is opened
+    if (tab.url && tab.url.includes('perplexity.ai')) {
+      try {
+        await chrome.scripting.executeScript({
+          target: { tabId: tab.id },
+          files: ['content.js']
+        });
+        console.log('Content script injected into Perplexity tab');
+
+        // Send message to apply CORS fixes immediately
+        await chrome.tabs.sendMessage(tab.id, { action: 'APPLY_CORS_FIX' });
+        console.log('CORS fix message sent to content script');
+      } catch (scriptError) {
+        console.error('Error injecting content script:', scriptError);
+      }
+    }
   } catch (error) {
     console.error('Error opening side panel:', error);
   }
@@ -16,6 +33,23 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
         path: 'sidebar/sidebar.html',
         enabled: true
       });
+
+      // Inject content script into Perplexity tabs when they finish loading
+      if (tab.url.includes('perplexity.ai')) {
+        try {
+          await chrome.scripting.executeScript({
+            target: { tabId: tabId },
+            files: ['content.js']
+          });
+          console.log('Content script injected into loaded Perplexity tab:', tabId);
+
+          // Send message to apply CORS fixes
+          await chrome.tabs.sendMessage(tabId, { action: 'APPLY_CORS_FIX' });
+          console.log('CORS fix message sent to loaded tab');
+        } catch (scriptError) {
+          console.error('Error injecting content script into loaded tab:', scriptError);
+        }
+      }
     } catch (error) {
       console.error('Error setting side panel options:', error);
     }
