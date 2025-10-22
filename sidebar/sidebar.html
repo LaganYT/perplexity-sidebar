@@ -15,10 +15,25 @@
       height: 100%;
       border: none;
     }
+    .fallback {
+      display: none;
+      padding: 20px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    .fallback.show {
+      display: block;
+    }
   </style>
   <script src="sidebar.js"></script>
 </head>
 <body>
-  <iframe id="perplexity" src="https://www.perplexity.ai/"></iframe>
+  <iframe id="perplexity" src="https://www.perplexity.ai/" sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation" allow="camera; microphone; geolocation; payment; usb; serial; bluetooth; magnetometer; gyroscope; accelerometer; ambient-light-sensor; display-capture"></iframe>
+  <div id="fallback" class="fallback">
+    <h3>Perplexity Sidebar</h3>
+    <p>If you're seeing this message, there may be an issue loading Perplexity.</p>
+    <p>Try refreshing the extension or check your internet connection.</p>
+    <button onclick="location.reload()">Retry</button>
+  </div>
 </body>
 </html>
