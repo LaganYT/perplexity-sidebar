@@ -6,33 +6,43 @@
       "type": "modifyHeaders",
       "responseHeaders": [
         {
-          "header": "X-Frame-Options",
+          "header": "x-frame-options",
           "operation": "remove"
         },
         {
-          "header": "Content-Security-Policy",
+          "header": "content-security-policy",
           "operation": "remove"
         },
         {
-          "header": "Access-Control-Allow-Origin",
+          "header": "access-control-allow-origin",
           "operation": "set",
           "value": "*"
         },
         {
-          "header": "Access-Control-Allow-Methods",
+          "header": "access-control-allow-methods",
           "operation": "set",
-          "value": "GET, POST, PUT, DELETE, OPTIONS"
+          "value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
         },
         {
-          "header": "Access-Control-Allow-Headers",
+          "header": "access-control-allow-headers",
           "operation": "set",
-          "value": "Content-Type, Authorization, X-Requested-With"
+          "value": "Content-Type, Authorization, X-Requested-With, Accept, Origin, Cache-Control, Pragma"
+        },
+        {
+          "header": "access-control-allow-credentials",
+          "operation": "set",
+          "value": "true"
+        },
+        {
+          "header": "content-security-policy",
+          "operation": "set",
+          "value": "frame-ancestors *; default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data: blob:; font-src * data:; connect-src *; media-src *; object-src *; child-src *; frame-src *; worker-src *;"
         }
       ]
     },
     "condition": {
       "urlFilter": "https://www.perplexity.ai/*",
-      "resourceTypes": ["main_frame", "sub_frame", "script", "stylesheet", "image", "font", "media"]
+      "resourceTypes": ["main_frame", "sub_frame", "script", "stylesheet", "image", "font", "media", "xmlhttprequest", "websocket"]
     }
   },
   {
@@ -42,33 +52,33 @@
       "type": "modifyHeaders",
       "responseHeaders": [
         {
-          "header": "X-Frame-Options",
+          "header": "x-frame-options",
           "operation": "remove"
         },
         {
-          "header": "Content-Security-Policy",
+          "header": "content-security-policy",
           "operation": "remove"
         },
         {
-          "header": "Access-Control-Allow-Origin",
+          "header": "access-control-allow-origin",
           "operation": "set",
           "value": "*"
         },
         {
-          "header": "Access-Control-Allow-Methods",
+          "header": "access-control-allow-methods",
           "operation": "set",
-          "value": "GET, POST, PUT, DELETE, OPTIONS"
+          "value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
         },
         {
-          "header": "Access-Control-Allow-Headers",
+          "header": "access-control-allow-headers",
           "operation": "set",
-          "value": "Content-Type, Authorization, X-Requested-With"
+          "value": "Content-Type, Authorization, X-Requested-With, Accept, Origin, Cache-Control, Pragma"
         }
       ]
     },
     "condition": {
       "urlFilter": "https://pplx-next-static-public.perplexity.ai/*",
-      "resourceTypes": ["script", "stylesheet", "image", "font", "media"]
+      "resourceTypes": ["script", "stylesheet", "image", "font", "media", "xmlhttprequest", "websocket"]
     }
   },
   {
@@ -78,33 +88,33 @@
       "type": "modifyHeaders",
       "responseHeaders": [
         {
-          "header": "X-Frame-Options",
+          "header": "x-frame-options",
           "operation": "remove"
         },
         {
-          "header": "Content-Security-Policy",
+          "header": "content-security-policy",
           "operation": "remove"
         },
         {
-          "header": "Access-Control-Allow-Origin",
+          "header": "access-control-allow-origin",
           "operation": "set",
           "value": "*"
         },
         {
-          "header": "Access-Control-Allow-Methods",
+          "header": "access-control-allow-methods",
           "operation": "set",
-          "value": "GET, POST, PUT, DELETE, OPTIONS"
+          "value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
         },
         {
-          "header": "Access-Control-Allow-Headers",
+          "header": "access-control-allow-headers",
           "operation": "set",
-          "value": "Content-Type, Authorization, X-Requested-With"
+          "value": "Content-Type, Authorization, X-Requested-With, Accept, Origin, Cache-Control, Pragma"
         }
       ]
     },
     "condition": {
       "urlFilter": "https://perplexity-ai.cloudflareaccess.com/*",
-      "resourceTypes": ["main_frame", "sub_frame", "script", "stylesheet", "image", "font", "media"]
+      "resourceTypes": ["main_frame", "sub_frame", "script", "stylesheet", "image", "font", "media", "xmlhttprequest", "websocket"]
     }
   }
 ]
