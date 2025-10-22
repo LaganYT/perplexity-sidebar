@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Perplexity Sidebar",
+  "version": "1.0",
+  "description": "Open Perplexity in a Chrome sidebar",
+  "icons": {
+    "48": "icons/icon48.png",
+    "96": "icons/icon96.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "48": "icons/icon48.png"
+    },
+    "default_title": "Open Perplexity Sidebar"
+  },
+  "side_panel": {
+    "default_path": "sidebar/sidebar.html"
+  },
+  "permissions": [
+    "sidePanel",
+    "activeTab",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "https://www.perplexity.ai/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  }
+}
